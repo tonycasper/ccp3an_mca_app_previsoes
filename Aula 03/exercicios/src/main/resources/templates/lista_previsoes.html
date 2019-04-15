@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Hello Spring Boot</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Alunos</h1>
+		</div>
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<form class="form-inline" method="POST" th:object="${previsao}" th:action="@{/previsoes}" style="margin: 20px 0">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="nomeDiaSemana" th:field="*{nomeDiaSemana}" /> 
+							<input type="text" class="form-control" placeholder="temperaturaMaxima" th:field="*{temperaturaMaxima}" /> 
+							<input type="text" class="form-control" placeholder="temperaturaMinima" th:field="*{temperaturaMinima}" /> 
+							<input type="text" class="form-control" placeholder="humidadeRelativa" th:field="*{humidadeRelativa}" /> 
+							<input type="text" class="form-control" placeholder="decricao" th:field="*{decricao}" /> 														
+							<button type="submit" class="btn btn-primary">Adicionar</button>
+						</div>
+					</form>
+					<tr>
+						<th>Dia da semana</th>
+						<th>Temperatura Maxima</th>
+						<th>Temperatura Minima</th>
+						<th>Humidade Relativa</th>
+						<th>Descricao</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tbody>
+					<tr th:each="aluno : ${alunos}">
+						<td th:text="${previsao.nomeDiaSemana}"></td>
+						<td th:text="${previsao.temperaturaMaxima}"></td>
+						<td th:text="${previsao.temperaturaMinima}"></td>
+						<td th:text="${previsao.humidadeRelativa}"></td>
+						<td th:text="${previsao.decricao}"></td>												
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+</body>
+</html>
